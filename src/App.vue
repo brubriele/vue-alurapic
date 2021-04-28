@@ -1,11 +1,11 @@
 <template>
 <div class="body">
   <h1 class="center">{{ titulo }}</h1>
-
+  <input type="search" class="filtro"  name="" id="" @input="filtro = $event.target.value" placeholder="Filtre por parte do título">
   <ul class="photo-list">
-    <li class="photo-list__item" v-for="foto of fotos" v-bind:key="foto._id">
+    <li class="photo-list__item" v-for="foto of fotosComFiltro" v-bind:key="foto._id">
             <meu-painel :titulo="foto.titulo">
-              <img :src="foto.url" :alt="foto.itulo" srcset="" class="responsive-img">
+              <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
             </meu-painel>
     </li>
   </ul>
@@ -15,16 +15,26 @@
 
 <script>
 
-import Painel from './components/shared/painel/Painel.vue'
+import Painel from './components/shared/painel/Painel.vue';
+import ImagemResponsiva from './components/shared/imagem-responsiva/imagemResponsiva.vue';
+
 export default {
   components: {
-    'meu-painel': Painel
+    'meu-painel': Painel,
+    'imagem-responsiva': ImagemResponsiva
   },
 
   data() {
     return {
       titulo: 'Alura Pic',
-      fotos: []
+      fotos: [],
+      filtro: ''
+    }
+  },
+  computed: {
+    fotosComFiltro() {
+      let exp = new RegExp(this.filtro.trim(), 'i');
+      return this.filtro ? this.fotos.filter(foto => exp.test(foto.titulo) ) : this.fotos
     }
   },
   created() {
@@ -56,10 +66,6 @@ export default {
     display: inline-block;
   }
 
-  .responsive-img {
-    width: 100%;
-  }
-
    .painel {
     padding: 0 auto;
     border: solid 2px grey;
@@ -79,6 +85,11 @@ export default {
     margin: 0 0 15px 0;
     padding: 10px;
     text-transform: uppercase;
+  }
+
+  .filtro {
+    display: block;
+    width: 100%;
   }
 
 
