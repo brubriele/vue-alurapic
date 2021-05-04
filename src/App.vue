@@ -1,11 +1,26 @@
 <template>
   <div class="body">
-    <router-view></router-view>
+   <meu-menu :rotas="routes" ></meu-menu>
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-export default {}
+import { routes } from './routes';
+import Menu from './components/shared/menu/Menu.vue';
+
+export default {
+  components: {
+    'meu-menu': Menu
+  },
+  data() {
+    return {
+      routes
+    }
+  }
+}
 </script>
 
 <style>
@@ -13,6 +28,12 @@ export default {}
     font-family: Helvetica, sans-serif;
     width: 71%;
     margin: 0 auto;
+  }
+ .pagina-enter-active, .pagina-leave-active {
+    transition: opacity .3s
+  }
+  .pagina-enter, .pagina-leave-active {
+    opacity: 0
   }
 
 </style>
