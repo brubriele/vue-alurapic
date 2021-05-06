@@ -10,7 +10,8 @@
                 tipo="botao"
                 rotulo="REMOVER"
                 @botaoAtivado="remove(foto)"
-                :confirmacao="true" />
+                :confirmacao="false"
+                estilo="perigo"/>
               </meu-painel>
       </li>
     </ul>
