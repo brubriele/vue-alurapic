@@ -6,7 +6,11 @@
       <li class="photo-list__item" v-for="foto of fotosComFiltro" v-bind:key="foto._id">
               <meu-painel :titulo="foto.titulo">
                 <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
-                <meu-botao tipo="botao" rotulo="REMOVER"></meu-botao>
+                <meu-botao
+                tipo="botao"
+                rotulo="REMOVER"
+                @botaoAtivado="remove(foto)"
+                :confirmacao="true" />
               </meu-painel>
       </li>
     </ul>
@@ -37,6 +41,11 @@ export default {
     fotosComFiltro() {
       let exp = new RegExp(this.filtro.trim(), 'i');
       return this.filtro ? this.fotos.filter(foto => exp.test(foto.titulo) ) : this.fotos
+    }
+  },
+  methods: {
+    remove (foto) {
+      alert('remover a foto!' + foto._id)
     }
   },
   created() {
