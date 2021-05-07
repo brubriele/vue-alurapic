@@ -35,6 +35,7 @@
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue'
 import Botao from '../shared/botao/Botao.vue';
 import Foto from '../../domain/foto/Foto';
+import FotoService from '../../domain/foto/FotoService';
 
 export default {
 
@@ -52,8 +53,8 @@ export default {
     grava() {
       // console.log('enviar dados para API')
       // console.log(this.foto)
-      this.resource
-        .save(this.foto)
+      this.service = new FotoService(this.$resource)
+        .cadastra(this.foto)
         .then(() => this.foto = new Foto(), err => console.log(err))
     }
   },
