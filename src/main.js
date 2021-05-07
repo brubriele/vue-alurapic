@@ -4,6 +4,8 @@ import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import { routes } from './routes';
 import './directives/Transform';
+import VeeValidate from 'vee-validate'
+import veeValidate from 'vee-validate';
 
 // registrando o módulo/plugin no global view object
 Vue.use(VueResource);
@@ -14,6 +16,8 @@ const router = new VueRouter({
   routes,
   mode: 'history'
  });
+
+Vue.use(veeValidate);
 
 new Vue({
   el: '#app',
