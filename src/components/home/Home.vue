@@ -25,7 +25,7 @@
 <script>
 
 import Painel from '../shared/painel/Painel.vue';
-import ImagemResponsiva from '../shared/imagem-responsiva/imagemResponsiva.vue';
+import ImagemResponsiva from '../shared/imagem-responsiva/imagemResponsiva';
 import Botao from '../shared/botao/Botao.vue';
 import transform from '../../directives/Transform';
 import FotoService from '../../domain/foto/FotoService';
