@@ -5,7 +5,10 @@
     <ul class="photo-list">
       <li class="photo-list__item" v-for="foto of fotosComFiltro" v-bind:key="foto._id">
               <meu-painel :titulo="foto.titulo" >
-                <imagem-responsiva :url="foto.url" :titulo="foto.titulo" v-meu-transform.animate.reverse="15"/>
+                <!-- Add reverse modifier -->
+                <!-- <imagem-responsiva :url="foto.url" :titulo="foto.titulo" v-meu-transform.animate.reverse="15"/> -->
+
+                <imagem-responsiva :url="foto.url" :titulo="foto.titulo" v-meu-transform:scale.animate="1.1"/>
                 <meu-botao
                 tipo="botao"
                 rotulo="REMOVER"
