@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="center">{{ titulo }}</h1>
+    <p v-show="mensagem" class="centralizado">{{ mensagem }}</p>
     <input type="search" class="filtro"  name="" id="" @input="filtro = $event.target.value" placeholder="Filtre por parte do título">
     <ul class="photo-list">
       <li class="photo-list__item" v-for="foto of fotosComFiltro" v-bind:key="foto._id">
@@ -43,7 +44,8 @@ export default {
     return {
       titulo: 'Alura Pic',
       fotos: [],
-      filtro: ''
+      filtro: '',
+      mensagem: ''
     }
   },
   computed: {
@@ -54,7 +56,12 @@ export default {
   },
   methods: {
     remove (foto) {
-      alert('remover a foto!' + foto._id)
+      // alert('remover a foto!' + foto._id)
+     this.$http.delete(`http://localhost:3000/v1/fotos/${foto._id}`)
+     .then(() => this.mensagem = "Foto removida com sucesso", err => {
+       console.log(err)
+       this.mensagem = "Não foi possível remover a foto"
+       })
     }
   },
   created() {
