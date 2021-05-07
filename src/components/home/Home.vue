@@ -4,8 +4,8 @@
     <input type="search" class="filtro"  name="" id="" @input="filtro = $event.target.value" placeholder="Filtre por parte do título">
     <ul class="photo-list">
       <li class="photo-list__item" v-for="foto of fotosComFiltro" v-bind:key="foto._id">
-              <meu-painel :titulo="foto.titulo" v-meu-transform>
-                <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
+              <meu-painel :titulo="foto.titulo" >
+                <imagem-responsiva :url="foto.url" :titulo="foto.titulo" v-meu-transform="{ incremento: 15, animate: true }"/>
                 <meu-botao
                 tipo="botao"
                 rotulo="REMOVER"
