@@ -6,6 +6,16 @@ import { routes } from './routes';
 import './directives/Transform';
 import VeeValidate from 'vee-validate';
 import msg from './pt_BR';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+// Import Bootstrap an BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './assets/css/teste.css'
+
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 // registrando o módulo/plugin no global view object
 Vue.use(VueResource);
