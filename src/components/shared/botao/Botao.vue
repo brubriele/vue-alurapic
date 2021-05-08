@@ -39,7 +39,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+$cor: firebrick;
  .botao {
         display: inline-block;
         padding: 10px;
@@ -49,7 +51,7 @@ export default {
     }
 
     .botao-perigo {
-        background: firebrick;
+        background: $cor;
         color: white;
     }
 
